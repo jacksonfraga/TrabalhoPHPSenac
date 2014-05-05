@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-05-04 22:29:49
+<?php /* Smarty version Smarty-3.1.18, created on 2014-05-04 23:16:05
          compiled from "templates\clientes.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:82865366e8093383e8-83739953%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1594096a76956bf0d8a46eee448694084115b03c' => 
     array (
       0 => 'templates\\clientes.tpl',
-      1 => 1399253362,
+      1 => 1399256127,
       2 => 'file',
     ),
   ),
@@ -70,9 +70,10 @@ $_smarty_tpl->tpl_vars['cliente']->_loop = true;
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['cliente']->value->getCPF();?>
 </td>
-						<td>X</td>
-						<td>Y</td>
-						<td>Z</td>
+						<td class="center"><input type="hidden" name="foto" value="<?php echo $_smarty_tpl->tpl_vars['cliente']->value->getFoto();?>
+" /><img src="images/button-view.png" alt="Ver foto" /></td>
+						<td class="center"><img src="images/button-edit.png" alt="Editar" /></td>
+						<td class="center"><img src="images/button-delete.png" alt="Excluir" /></td>
 					</tr>
 					<?php } ?>
 				</tbody>

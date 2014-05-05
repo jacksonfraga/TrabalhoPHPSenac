@@ -77,6 +77,15 @@ table thead {
 	padding: 0px;
 }
 
+table {
+	border: none;
+    border-collapse: collapse;
+}
+td {
+    padding: 1 3 1 3;
+	white-space:nowrap;
+}
+
 table tbody tr {
 	background: silver;
 }
@@ -115,4 +124,8 @@ table tbody tr:nth-of-type(odd) {
 .msg-error {
 	font-weight: 900;
 	color: #f00;
+}
+
+.center {
+	text-align: center;
 }

@@ -41,7 +41,8 @@
 		if ($_SERVER['REQUEST_METHOD'] == "GET")
 			$messageError = "";
 			
-		require('libs/Smarty.class.php');
+	
+	require('libs/Smarty.class.php');
 	$smarty = new Smarty;
 	
 	$smarty->template_dir = 'templates/';

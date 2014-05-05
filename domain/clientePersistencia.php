@@ -33,18 +33,18 @@ class ClientePersistencia {
 				// Obtendo o nome
 				$cliente = new Cliente();			
 
-				$cliente->setId($registro['Id'].PHP_EOL);
-				$cliente->setNome($registro['Nome'].PHP_EOL);
-				$cliente->setCidade($registro['Cidade'].PHP_EOL);
-				$cliente->setRG($registro['RG'].PHP_EOL);
-				$cliente->setPai($registro['Pai'].PHP_EOL);
-				$cliente->setEndereco($registro['Endereco'].PHP_EOL);
-				$cliente->setEstado($registro['Estado'].PHP_EOL);
-				$cliente->setEMail($registro['EMail'].PHP_EOL);
-				$cliente->setMae($registro['Mae'].PHP_EOL);
-				$cliente->setFone($registro['Fone'].PHP_EOL);
-				$cliente->setCPF($registro['CPF'].PHP_EOL);
-				$cliente->setFoto($registro['Foto'].PHP_EOL);
+				$cliente->setId($registro['Id']);
+				$cliente->setNome($registro['Nome']);
+				$cliente->setCidade($registro['Cidade']);
+				$cliente->setRG($registro['RG']);
+				$cliente->setPai($registro['Pai']);
+				$cliente->setEndereco($registro['Endereco']);
+				$cliente->setEstado($registro['Estado']);
+				$cliente->setEMail($registro['EMail']);
+				$cliente->setMae($registro['Mae']);
+				$cliente->setFone($registro['Fone']);
+				$cliente->setCPF($registro['CPF']);
+				$cliente->setFoto($registro['Foto']);
 
 				$items[] = $cliente;
 			}

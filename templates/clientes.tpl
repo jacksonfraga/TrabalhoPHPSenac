@@ -2,6 +2,7 @@
 <head>
 	<title>{$nomeSistema}</title>
 	<link rel="stylesheet" type="text/css" href="site.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 </head>
 <body>
 	<div class="header">{$nomeSistema}</div>
@@ -33,9 +34,9 @@
 					<tr>
 						<td>{$cliente->getNome()}</td>
 						<td>{$cliente->getCPF()}</td>
-						<td>X</td>
-						<td>Y</td>
-						<td>Z</td>
+						<td class="center"><input type="hidden" name="foto" value="{$cliente->getFoto()}" /><img src="images/button-view.png" alt="Ver foto" /></td>
+						<td class="center"><img src="images/button-edit.png" alt="Editar" /></td>
+						<td class="center"><img src="images/button-delete.png" alt="Excluir" /></td>
 					</tr>
 					{/foreach}
 				</tbody>
