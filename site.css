@@ -1,0 +1,118 @@
+body {
+margin: 0px;
+}
+
+.header {
+	font-size: 42px;
+	font-family: monospace;
+	text-align: center;
+	padding: 25px 10px 5px 10px;
+}
+
+.title {
+	display: block-inline;
+	text-align: center;
+	border-top:2px solid #DAA520;
+	border-bottom:2px solid #DAA520;
+}
+
+.login {
+	padding-top: 25px;
+	width: 420px;
+    margin: 0 auto;
+}
+.login div.label{
+	display: inline-block;
+	width: 85px;
+}
+
+.login input:text {
+	width: 10px;	
+}
+
+.container {
+	width: 100%;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0px;	
+	text-align: center;
+	width: 100%;
+	background-color: #DAA520;
+	left: 0px;
+    overflow: hidden;
+	display: inline;
+    z-index: 99999;
+}
+
+.sair {
+	position: fixed;	
+	right: 5px;
+    overflow: hidden;
+	display: inline;
+}
+.sair  a {
+	color: red;
+}
+
+.menu {
+	padding: 25px;
+	vertical-align: top;
+	border-right:2px solid #DAA520;
+	display: inline-block;		
+	width: 180px;
+	height: 75%;
+}
+
+.content {
+	width: auto;	
+	display: inline-block;	
+}
+
+table thead {
+	border: 0px;
+	background: #DAA520;
+	margin: 0px;
+	padding: 0px;
+}
+
+table tbody tr {
+	background: silver;
+}
+
+table tbody tr:nth-of-type(odd) {
+	background: #EEE9E9;
+}
+
+.grid {
+	width: 90%;
+}
+
+.grid-date {
+}
+
+.grid-title {
+}
+
+.grid-btn {
+}
+
+.row .field {
+	display: inline-block;
+}
+
+.row .field .label{
+	display: inline-block;
+	width: 80px;
+}
+
+.row .field .value{
+	display: inline-block;
+	width: 120px;
+}
+
+.msg-error {
+	font-weight: 900;
+	color: #f00;
+}
