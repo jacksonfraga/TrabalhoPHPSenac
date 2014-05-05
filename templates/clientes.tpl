@@ -9,13 +9,11 @@
 	<div class="title">Administa&ccedil;&atilde;o do Site<div class="sair"><a href="logout.php">Sair</a></div></div>
 	<div class="container">
 		<div class="menu">
-			<?php
-				include 'menu.php';
-			?>
+			{include file="menu.tpl"}
 		</div>
 		<div class="content">
 			<h3>Cadastro de Cliente</h3>
-			<div><a href="novoCliente.php">NOVO ITEM</a><div>
+			<div><a href="clienteNovo.php">NOVO ITEM</a><div>
 			<div>
 				<table class="grid">
 				<thead>
