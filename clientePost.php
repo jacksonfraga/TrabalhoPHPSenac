@@ -3,58 +3,54 @@
 	include "domain/cliente.php";
 	include "domain/clientePersistencia.php";
 	
-	var $cliente;
+	$cliente = new Cliente();
 	$clientePersistencia = new ClientePersistencia();
 	
 	if ($_SERVER['REQUEST_METHOD'] == "GET")
-	{
-		if (isset($_REQUEST["hideId"]))
+		if (isset($_REQUEST["id"]))
 		{
-			$hideId = $_REQUEST["hideId"];
-			$cliente = $clientePersistencia.getById($hideId);
+			$cliente = $clientePersistencia->GetById($_REQUEST["id"]);
 		}
-	} 
-	else if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
-	
-	}
 	
 	
 	if (isset($_REQUEST["hideId"]))
-		$hideId = $_REQUEST["hideId"];
+		$cliente->setId($_REQUEST["hideId"]);
 	if (isset($_REQUEST["txtNome"]))
-		$txtNome = $_REQUEST["txtNome"];
+		$cliente->setNome($_REQUEST["txtNome"]);
 	if (isset($_REQUEST["txtCidade"]))
-		$txtCidade = $_REQUEST["txtCidade"];
+		$cliente->setCidade($_REQUEST["txtCidade"]);
 	if (isset($_REQUEST["txtRG"]))
-		$txtRG = $_REQUEST["txtRG"];
+		$cliente->setRG($_REQUEST["txtRG"]);
 	if (isset($_REQUEST["txtPai"]))
-		$txtPai = $_REQUEST["txtPai"];
+		$cliente->setPai($_REQUEST["txtPai"]);
 	if (isset($_REQUEST["txtEndereco"]))
-		$txtEndereco = $_REQUEST["txtEndereco"];
+		$cliente->setEndereco($_REQUEST["txtEndereco"]);
 	if (isset($_REQUEST["txtEstado"]))
-		$txtEstado = $_REQUEST["txtEstado"];
+		$cliente->setEstado($_REQUEST["txtEstado"]);
 	if (isset($_REQUEST["txtEmail"]))
-		$txtEmail = $_REQUEST["txtEmail"];
+		$cliente->setEmail($_REQUEST["txtEmail"]);
 	if (isset($_REQUEST["txtMae"]))
-		$txtMae = $_REQUEST["txtMae"];
+		$cliente->setMae($_REQUEST["txtMae"]);
 	if (isset($_REQUEST["txtFone"]))
-		$txtFone = $_REQUEST["txtFone"];
+		$cliente->setFone($_REQUEST["txtFone"]);
 	if (isset($_REQUEST["txtCPF"]))
-		$txtCPF = $_REQUEST["txtCPF"];
+		$cliente->setCPF($_REQUEST["txtCPF"]);
 	if (isset($_REQUEST["hideFoto"]))
-		$hideFoto = $_REQUEST["hideFoto"];
+		$cliente->setFoto($_REQUEST["hideFoto"]);
 
 	require('libs/Smarty.class.php');
 	$smarty = new Smarty;
 	
 	$smarty->template_dir = 'templates/';
+	
+	if ($_SERVER['REQUEST_METHOD'] == "POST")
+		$clientePersistencia->Post($cliente);
+	  
 
 	$smarty->assign('nomeSistema',$nomeSistema);
 	$smarty->assign('nomeEmpresa',$nomeEmpresa);
 	$smarty->assign('enderecoEmpresa',$enderecoEmpresa);
-			
-	$smarty->assign('Cliente', $cliente);
-
-	$smarty->display('clienteEditar.tpl');
+		
+	$smarty->assign('cliente', $cliente);
+	$smarty->display('clientePost.tpl');
 ?>

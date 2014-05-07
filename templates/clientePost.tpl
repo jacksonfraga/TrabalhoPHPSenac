@@ -11,11 +11,12 @@
 			{include file="menu.tpl"}
 		</div>
 		<div class="content">
-			<h3>Cadastro de Cliente</h3>
+			<h3>Cadastro de cliente</h3>
 			
 			<div>
 			
-			<form action="clienteNovo.php" method="post">
+			<form action="clientePost.php" method="post" >				
+				<input type="hidden" name="hideId" value="{$cliente->getId()}" />
 				<div class="row">
 					<div class="field"><div class="label">Nome: </div><input type="text" value="{$cliente->getNome()}" id="txtNome" name="txtNome" /></div>
 					<div class="field"><div class="label">Cidade: </div><input type="text" value="{$cliente->getCidade()}" id="txtCidade" name="txtCidade" /></div>
@@ -35,6 +36,10 @@
 				<div class="row">
 					<div class="field"><div class="label">Fone: </div><input type="text" value="{$cliente->getFone()}" id="txtFone" name="txtFone" /></div>
 					<div class="field"><div class="label">CPF: </div><input type="text" value="{$cliente->getCPF()}" id="txtCPF" name="txtCPF" /></div>
+				</div>
+				<div class="row">
+					<div class="field"><div class="label">Foto: </div><input type="text" value="{$cliente->getFoto()}" id="hideFoto" name="hideFoto" /></div>
+					
 				</div>
 				<div>
 					<input type="submit" value="OK" />
