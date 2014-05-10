@@ -1,207 +1,217 @@
 <?php
 
 class ClientePersistencia {
-	
+
+	private $tipoRegistro;
+	function __construct() {
+	   $this->tipoRegistro = "cliente";
+	}
+
 	public function GetAll()
 	{
 		$items = array();
-		
-		// Exemplo de scrip para exibir os nomes obtidos no arquivo CSV de exemplo
-		$delimiter = ',';
-		$enclosure = '"';
-		
-		// Abrir arquivo para leitura		
-		$fcliente = fopen(getcwd() . '\clientes.txt', 'r');
-		
-		if ($fcliente) { 
 
-			// Ler cabecalho do arquivo
-			$cabecalho = fgetcsv($fcliente, 0, $delimiter, $enclosure);
+		$arquivo = file('jackson.txt'); // Lê todo o arquivo para um vetor
 
-			// Enquanto nao terminar o arquivo
-			while (!feof($fcliente)) { 
+		if ($arquivo) {
 
-				// Ler uma linha do arquivo
-				$linha = fgetcsv($fcliente, 0, $delimiter, $enclosure);
-				if (!$linha) {
+			foreach($arquivo as $k=>$linha)
+			{
+
+
+				$linha = str_replace("\\,", "<<||>>", $linha);
+
+
+				$registro = str_getcsv($linha);
+
+				if (strtoupper($registro[0]) != strtoupper($this->tipoRegistro)) {
 					continue;
 				}
 
-				// Montar registro com valores indexados pelo cabecalho
-				$registro = array_combine($cabecalho, $linha);
-
 				// Obtendo o nome
-				$cliente = new Cliente();			
+				$cliente = new Cliente();
 
-				$cliente->setId($registro['Id']);
-				$cliente->setNome($registro['Nome']);
-				$cliente->setCidade($registro['Cidade']);
-				$cliente->setRG($registro['RG']);
-				$cliente->setPai($registro['Pai']);
-				$cliente->setEndereco($registro['Endereco']);
-				$cliente->setEstado($registro['Estado']);
-				$cliente->setEMail($registro['EMail']);
-				$cliente->setMae($registro['Mae']);
-				$cliente->setFone($registro['Fone']);
-				$cliente->setCPF($registro['CPF']);
-				$cliente->setFoto($registro['Foto']);
+				$cliente->setId($registro[01]);
+				$cliente->setNome($registro[02]);
+				$cliente->setCidade($registro[03]);
+				$cliente->setRG($registro[04]);
+				$cliente->setPai($registro[05]);
+				$cliente->setEndereco($registro[06]);
+				$cliente->setEstado($registro[07]);
+				$cliente->setEMail($registro[08]);
+				$cliente->setMae($registro[09]);
+				$cliente->setFone($registro[10]);
+				$cliente->setCPF($registro[11]);
+				$cliente->setFoto($registro[12]);
 
 				$items[] = $cliente;
 			}
-							
-			fclose($fcliente);
 		}
-			
+
 		return $items;
-		
+
 	}
-	
+
 	public function GetById($id)
 	{
 		$cliente = new Cliente();
-		// Exemplo de scrip para exibir os nomes obtidos no arquivo CSV de exemplo
-		$delimiter = ',';
-		$enclosure = '"';
-		
-		// Abrir arquivo para leitura		
-		$fcliente = fopen(getcwd() . '\clientes.txt', 'r');
-		
-		if ($fcliente) { 
 
-			// Ler cabecalho do arquivo
-			$cabecalho = fgetcsv($fcliente, 0, $delimiter, $enclosure);
+		$arquivo = file('jackson.txt'); // Lê todo o arquivo para um vetor
 
-			// Enquanto nao terminar o arquivo
-			while (!feof($fcliente)) { 
+		if ($arquivo) {
 
-				// Ler uma linha do arquivo
-				$linha = fgetcsv($fcliente, 0, $delimiter, $enclosure);
-				if (!$linha) {
+			foreach($arquivo as $k=>$linha)
+			{
+
+				$registro = str_getcsv($linha);
+
+				if (strtoupper($registro[0]) != strtoupper($this->tipoRegistro)) {
 					continue;
 				}
 
-				// Montar registro com valores indexados pelo cabecalho
-				$registro = array_combine($cabecalho, $linha);
-
-				if ($id == $registro['Id'])
+				if ($registro[01] = $id)
 				{
-					$cliente->setId($registro['Id']);
-					$cliente->setNome($registro['Nome']);
-					$cliente->setCidade($registro['Cidade']);
-					$cliente->setRG($registro['RG']);
-					$cliente->setPai($registro['Pai']);
-					$cliente->setEndereco($registro['Endereco']);
-					$cliente->setEstado($registro['Estado']);
-					$cliente->setEMail($registro['EMail']);
-					$cliente->setMae($registro['Mae']);
-					$cliente->setFone($registro['Fone']);
-					$cliente->setCPF($registro['CPF']);
-					$cliente->setFoto($registro['Foto']);
-				}
+					// Obtendo o nome
+					$cliente = new Cliente();
 
-				$items[] = $cliente;
+					$cliente->setId($registro[01]);
+					$cliente->setNome($registro[02]);
+					$cliente->setCidade($registro[03]);
+					$cliente->setRG($registro[04]);
+					$cliente->setPai($registro[05]);
+					$cliente->setEndereco($registro[06]);
+					$cliente->setEstado($registro[07]);
+					$cliente->setEMail($registro[08]);
+					$cliente->setMae($registro[09]);
+					$cliente->setFone($registro[10]);
+					$cliente->setCPF($registro[11]);
+					$cliente->setFoto($registro[12]);
+				}
 			}
-							
-			fclose($fcliente);
 		}
-		
+
 		return $cliente;
 	}
-	
+
 	function Delete($id)
-	{		
-		// Exemplo de scrip para exibir os nomes obtidos no arquivo CSV de exemplo
-		$delimiter = ',';
-		$enclosure = '"';
-		
-		// Abrir arquivo para leitura		
-		$fcliente = fopen(getcwd() . '\clientes.txt', 'w');
-		
-		if ($fcliente) { 
+	{
 
-			// Ler cabecalho do arquivo
-			$cabecalho = fgetcsv($fcliente, 0, $delimiter, $enclosure);
+		$arquivo = file('jackson.txt'); // Lê todo o arquivo para um vetor
 
-			// Enquanto nao terminar o arquivo
-			while (!feof($fcliente)) { 
+		if ($arquivo) {
 
-				// Ler uma linha do arquivo
-				$linha = fgetcsv($fcliente, 0, $delimiter, $enclosure);
-				if (!$linha) {
+			foreach($arquivo as $k=>$linha)
+			{
+				$registro = str_getcsv($linha);
+
+				if (strtoupper($registro[0]) != strtoupper($this->tipoRegistro)) {
 					continue;
 				}
 
-				// Montar registro com valores indexados pelo cabecalho
-				$registro = array_combine($cabecalho, $linha);
-
-				if ($id == $registro['Id'])
+				if ($registro[01] = $id)
 				{
-						
+					unset($arquivo[$k]); // Elininando a linha
 				}
-
-				$items[] = $cliente;
 			}
-							
-			fclose($fcliente);
+
+			file_put_contents('jackson.txt',$arquivo);
 		}
 	}
 	function Post($cliente)
 	{
-		$out = fopen('jackson.txt', 'a+');		
-		$cabecalho = fgetcsv($out, 0, ',', '"');
-		fputcsv($out, array($cliente->getNome(), $cliente->getCPF()));		
-		fclose($out);
-	}
-	
-	function PostAAA($cliente)
-	{
-		// Exemplo de scrip para exibir os nomes obtidos no arquivo CSV de exemplo
-		$delimiter = ',';
-		$enclosure = '"';
-		
-		// Abrir arquivo para leitura		
-		$fcliente = fopen(getcwd() . '\clientes.txt', 'w');
-		
-		if ($fcliente) { 
+		$id = $cliente->getId();
+		$lastID = 0;
 
-			// Ler cabecalho do arquivo
-			$cabecalho = fgetcsv($fcliente, 0, $delimiter, $enclosure);
+		$arquivo = file('jackson.txt'); // Lê todo o arquivo para um vetor
 
-			// Enquanto nao terminar o arquivo
-			while (!feof($fcliente)) { 
+		if ($arquivo) {
 
-				// Ler uma linha do arquivo
-				$linha = fgetcsv($fcliente, 0, $delimiter, $enclosure);
-				if (!$linha) {
+			foreach($arquivo as $k=>$linha)
+			{
+				$registro = str_getcsv($linha);				
+				
+				if (strtoupper($registro[0]) != strtoupper($this->tipoRegistro)) {
 					continue;
 				}
 
-				// Montar registro com valores indexados pelo cabecalho
-				$registro = array_combine($cabecalho, $linha);
-
-				if ($id == $registro['Id'])
+				$lastID = $registro[01];
+				if ($registro[01] = $id)
 				{
-					$registro['Nome'] = $cliente->getNome();
-					$registro['Cidade'] = $cliente->getCidade();
-					$registro['RG'] = $cliente->getRG();
-					$registro['Pai'] = $cliente->getPai();
-					$registro['Endereco'] = $cliente->getEndereco();
-					$registro['Estado'] = $cliente->getEstado();
-					$registro['EMail'] = $cliente->getEMail();
-					$registro['Mae'] = $cliente->getMae();
-					$registro['Fone'] = $cliente->getFone();
-					$registro['CPF'] = $cliente->getCPF();
-					$registro['Foto'] = $cliente->getFoto();
+					unset($registro);
 					
-					fputcsv($fcliente, $registro);
+					$registro[] = $this->tipoRegistro;
+					$registro[] = $cliente->getId();
+					$registro[] = $cliente->getNome();
+					$registro[] = $cliente->getCidade();
+					$registro[] = $cliente->getRG();
+					$registro[] = $cliente->getPai();
+					$registro[] = $cliente->getEndereco();
+					$registro[] = $cliente->getEstado();
+					$registro[] = $cliente->getEMail();
+					$registro[] = $cliente->getMae();
+					$registro[] = $cliente->getFone();
+					$registro[] = $cliente->getCPF();
+					$registro[] = $cliente->getFoto();
+
+					print_r($registro);
+					
+					var_dump($registro);
+					
+					foreach($registro as $j=>$field)
+					{
+						$registro[$j] = str_replace(",", "\,", $field);
+					}
+
+		
+					
+					$arquivo[$k] = join(",", $registro) . "\n";
+					
+					
+
+					break;
 				}
+
 			}
-							
-			fclose($fcliente);
-			
-			
-			
+
+
 		}
+
+		if (!$id)
+		{
+			print_r($arquivo);
+
+			$id = $lastID+1;
+			$novoRegistro = array($this->tipoRegistro,
+				$id,
+				$cliente->getNome(),
+				$cliente->getCidade(),
+				$cliente->getRG(),
+				$cliente->getPai(),
+				$cliente->getEndereco(),
+				$cliente->getEstado(),
+				$cliente->getEMail(),
+				$cliente->getMae(),
+				$cliente->getFone(),
+				$cliente->getCPF(),
+				$cliente->getFoto()
+			);
+
+
+			foreach($novoRegistro as $j=>$field)
+			{
+				$novoRegistro[$j] = str_replace(",", "\,", $field);
+			}
+			$strNovo = join(",", $novoRegistro);
+			echo $strNovo . "<br><br><br>";
+			array_push($arquivo, $strNovo);
+
+			print_r($arquivo);
+		}
+
+
+		file_put_contents('jackson.txt', $arquivo);
+
+		return $id;
 	}
 }
 

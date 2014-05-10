@@ -2,17 +2,17 @@
 	include 'config.php';
 	include "domain/cliente.php";
 	include "domain/clientePersistencia.php";
-	
+
 	$cliente = new Cliente();
 	$clientePersistencia = new ClientePersistencia();
-	
+
 	if ($_SERVER['REQUEST_METHOD'] == "GET")
 		if (isset($_REQUEST["id"]))
 		{
 			$cliente = $clientePersistencia->GetById($_REQUEST["id"]);
 		}
-	
-	
+
+
 	if (isset($_REQUEST["hideId"]))
 		$cliente->setId($_REQUEST["hideId"]);
 	if (isset($_REQUEST["txtNome"]))
@@ -40,17 +40,20 @@
 
 	require('libs/Smarty.class.php');
 	$smarty = new Smarty;
-	
+
 	$smarty->template_dir = 'templates/';
-	
+
 	if ($_SERVER['REQUEST_METHOD'] == "POST")
-		$clientePersistencia->Post($cliente);
-	  
+	{
+		$id = $clientePersistencia->Post($cliente);
+		$cliente->setId($id);
+	}
+
 
 	$smarty->assign('nomeSistema',$nomeSistema);
 	$smarty->assign('nomeEmpresa',$nomeEmpresa);
 	$smarty->assign('enderecoEmpresa',$enderecoEmpresa);
-		
+
 	$smarty->assign('cliente', $cliente);
 	$smarty->display('clientePost.tpl');
 ?>

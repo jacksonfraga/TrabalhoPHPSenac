@@ -1,19 +1,2 @@
-Id,Nome,CPF
-02,Jackson 02,02:05:03
-03,Jackson 03,1710012
-04,Jackson 04,1710013
-05,Jackson 05,1710014
-06,Jackson 06,1710015
-07,Jackson 07,1710016
-08,Jackson 08,1710017
-09,Jackson 09,1710018
-10,Jackson\,Fraga,02:05:32
-11,Jackson 11,1710020
-12,Jackson 12,1710021
-13,Jackson 13,1710022
-14,Jackson 14,1710023
-15,Jackson 15,1710024
-16,Jackson 16,1710025
-17,Jackson 17,1710026
-18,Jackson 18,1710027
-19,Jackson 19,1710028
+usuario,1,
+cliente,1,Nome,Cidade,RG,Pai,End,Estado,mail,mae,FONE,CPF,FOTO
