@@ -1,5 +1,6 @@
 <?php
 	include 'config.php';
+	include 'autenticar.php';
 	include "domain/cliente.php";
 	include "domain/clientePersistencia.php";
 
@@ -45,8 +46,10 @@
 
 	if ($_SERVER['REQUEST_METHOD'] == "POST")
 	{
+		print_r($cliente);
 		$id = $clientePersistencia->Post($cliente);
-		$cliente->setId($id);
+		$redirect = "clientes.php";	
+		header("location:$redirect");
 	}
 
 

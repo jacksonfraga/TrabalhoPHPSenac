@@ -9,13 +9,6 @@ margin: 0px;
 	padding: 25px 10px 5px 10px;
 }
 
-.title {
-	display: block-inline;
-	text-align: center;
-	border-top:2px solid #DAA520;
-	border-bottom:2px solid #DAA520;
-}
-
 .login {
 	padding-top: 25px;
 	width: 420px;
@@ -46,11 +39,25 @@ margin: 0px;
     z-index: 99999;
 }
 
-.sair {
-	position: fixed;	
-	right: 5px;
-    overflow: hidden;
+.title {
+	display: block-inline;
+	text-align: center;
+	border-top:2px solid #DAA520;
+	border-bottom:2px solid #DAA520;
+}
+
+.title>div {
 	display: inline;
+}
+
+.sair {
+    float: right;
+	padding-right: 10px;
+/*     overflow: hidden; 
+	float: top;
+	top: -5;
+	position: absolute;
+	display: float; */
 }
 .sair  a {
 	color: red;

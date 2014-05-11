@@ -1,2 +1,5 @@
-usuario,1,
-cliente,1,Nome,Cidade,RG,Pai,End,Estado,mail,mae,FONE,CPF,FOTO
+//arquivo de dados
+cliente,2,Beltrano,Cidade do Beltrano,RG do Beltrano,Pai do Beltrano,End do Beltrano,Estado do Beltrano,beltrano@mail.com,Mae do Beltrano,Fone do Beltrano,CPF do Beltrano,Foto do Beltrano
+cliente,3,Ciclano,,,,,,,,,,
+
+cliente,4,Baitaca,,,,,,,,,,

@@ -1,9 +1,17 @@
 <?php
 	include 'config.php';
+	include 'autenticar.php';
 	include "domain/cliente.php";
 	include "domain/clientePersistencia.php";
-	
+		
 	$clientePersistencia = new ClientePersistencia();
+	
+	if (isset($_REQUEST["deleteId"]))
+	{
+		$clientePersistencia->Delete($_REQUEST["deleteId"]);
+	}
+	
+	
 	$clientes = $clientePersistencia->GetAll();
 	
 	require('libs/Smarty.class.php');

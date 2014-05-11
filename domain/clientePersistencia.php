@@ -1,7 +1,13 @@
 <?php
+	function startsWith($haystack, $needle)
+	{
+		return $needle === "" || strpos($haystack, $needle) === 0;
+	}
 
+	
 class ClientePersistencia {
 
+	
 	private $tipoRegistro;
 	function __construct() {
 	   $this->tipoRegistro = "cliente";
@@ -68,24 +74,29 @@ class ClientePersistencia {
 				if (strtoupper($registro[0]) != strtoupper($this->tipoRegistro)) {
 					continue;
 				}
-
-				if ($registro[01] = $id)
+				
+				
+				if ($registro[01] == $id)
 				{
 					// Obtendo o nome
 					$cliente = new Cliente();
 
-					$cliente->setId($registro[01]);
-					$cliente->setNome($registro[02]);
-					$cliente->setCidade($registro[03]);
-					$cliente->setRG($registro[04]);
-					$cliente->setPai($registro[05]);
-					$cliente->setEndereco($registro[06]);
-					$cliente->setEstado($registro[07]);
-					$cliente->setEMail($registro[08]);
-					$cliente->setMae($registro[09]);
+					$cliente->setId($registro[1]);
+					$cliente->setNome($registro[2]);
+					$cliente->setCidade($registro[3]);
+					$cliente->setRG($registro[4]);
+					$cliente->setPai($registro[5]);
+					$cliente->setEndereco($registro[6]);
+					$cliente->setEstado($registro[7]);
+					$cliente->setEMail($registro[8]);
+					$cliente->setMae($registro[9]);
 					$cliente->setFone($registro[10]);
 					$cliente->setCPF($registro[11]);
 					$cliente->setFoto($registro[12]);
+					
+					print_r($cliente);					
+					
+					break;
 				}
 			}
 		}
@@ -108,7 +119,7 @@ class ClientePersistencia {
 					continue;
 				}
 
-				if ($registro[01] = $id)
+				if ($registro[01] == $id)
 				{
 					unset($arquivo[$k]); // Elininando a linha
 				}
@@ -134,8 +145,10 @@ class ClientePersistencia {
 					continue;
 				}
 
-				$lastID = $registro[01];
-				if ($registro[01] = $id)
+				if ($registro[01] > $lastID)
+					$lastID = $registro[01];
+
+				if ($registro[01] == $id)
 				{
 					unset($registro);
 					
@@ -152,10 +165,6 @@ class ClientePersistencia {
 					$registro[] = $cliente->getFone();
 					$registro[] = $cliente->getCPF();
 					$registro[] = $cliente->getFoto();
-
-					print_r($registro);
-					
-					var_dump($registro);
 					
 					foreach($registro as $j=>$field)
 					{
@@ -203,9 +212,12 @@ class ClientePersistencia {
 			}
 			$strNovo = join(",", $novoRegistro);
 			echo $strNovo . "<br><br><br>";
-			array_push($arquivo, $strNovo);
+			
+			if (!startsWith($strNovo, "\n"))
+				$strNovo = "\n" . $strNovo;
+				
+			$arquivo[] = $strNovo;
 
-			print_r($arquivo);
 		}
 
 

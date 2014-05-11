@@ -3,7 +3,7 @@
 	include 'autenticar.php';
 	
 	$redirect = "admin.php";	
-	header("location:$redirect");	
+	header("location:$redirect");
 	
 ?>
 

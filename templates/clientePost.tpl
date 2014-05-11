@@ -5,7 +5,10 @@
 </head>
 <body>
 	<div class="header">{$nomeSistema}</div>
-	<div class="title">Administa&ccedil;&atilde;o do Site<div class="sair"><a href="logout.php">Sair</a></div></div>
+	<div class="title">
+		<div>Administa&ccedil;&atilde;o do Site</div>
+		<div class="sair"><a href="logout.php">Sair</a></div>
+	</div>
 	<div class="container">
 		<div class="menu">
 			{include file="menu.tpl"}
@@ -42,8 +45,7 @@
 					
 				</div>
 				<div>
-					<input type="submit" value="OK" />
-					<input type="reset" value="Limpar" />
+					<input type="submit" value="Salvar" >
 				</div>
 				
 			</form>
