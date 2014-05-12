@@ -2,8 +2,9 @@
 <head>
 	<title>{$nomeSistema}</title>
 	<link rel="stylesheet" type="text/css" href="site.css" />
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-ui-1.10.4.js"></script>
 	<style type="text/css">
 		.div-link:hover img {
 			background-color: #DAA520;
@@ -42,7 +43,7 @@
 					<tr>
 						<td>{$cliente->getNome()}</td>
 						<td>{$cliente->getCPF()}</td>
-						<td class="center"><div class="div-link btn-foto" ><a href="#"><div style="display: none;" class="foto"><img src="{$cliente->getFoto()}" alt="FOTO" /></div><img src="images/button-view.png" alt="Ver foto" /></a></div></td>
+						<td class="center"><div class="div-link btn-foto" ><a href="foto.php?id={$cliente->getId()}"><img src="images/button-view.png" alt="Ver foto" /></a></div></td>
 						<td class="center"><div class="div-link" ><a href="clientePost.php?id={$cliente->getId()}"><img src="images/button-edit.png" alt="Editar" /></a></div></td>
 						<td class="center"><div class="div-link" ><a href="clientes.php?deleteId={$cliente->getId()}"><img src="images/button-delete.png" alt="Excluir" /></a></div></td>
 					</tr>
@@ -57,11 +58,11 @@
 	<div class="footer">{$nomeEmpresa} - {$enderecoEmpresa}</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.btn-foto a').click(function(event) {
+			
+			$('.btn-foto a').click(function(event){
 				event.preventDefault();
 				
-				alert("bah");
-				$(this).find(".foto").dialog({ modal : true });
+				$('<div>').load(this.href).dialog({ modal : true });
 			})
 		});
 	</script>

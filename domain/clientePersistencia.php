@@ -94,8 +94,6 @@ class ClientePersistencia {
 					$cliente->setCPF($registro[11]);
 					$cliente->setFoto($registro[12]);
 					
-					print_r($cliente);					
-					
 					break;
 				}
 			}
@@ -187,7 +185,6 @@ class ClientePersistencia {
 
 		if (!$id)
 		{
-			print_r($arquivo);
 
 			$id = $lastID+1;
 			$novoRegistro = array($this->tipoRegistro,

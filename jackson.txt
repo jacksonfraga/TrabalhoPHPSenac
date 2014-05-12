@@ -1,5 +1,8 @@
 //arquivo de dados
-cliente,2,Beltrano,Cidade do Beltrano,RG do Beltrano,Pai do Beltrano,End do Beltrano,Estado do Beltrano,beltrano@mail.com,Mae do Beltrano,Fone do Beltrano,CPF do Beltrano,Foto do Beltrano
-cliente,3,Ciclano,,,,,,,,,,
+cliente,2,Beltrano,Cidade do Beltrano,RG do Beltrano,Pai do Beltrano,End do Beltrano,Estado do Beltrano,beltrano@mail.com,Mae do Beltrano,Fone do Beltrano,CPF do Beltrano,images/fotos/foto_1_201405042232.jpg
+cliente,3,Ciclano,,,,,,,,,,images/fotos/foto_2_201405042232.jpg
 
-cliente,4,Baitaca,,,,,,,,,,
+cliente,4,Baitaca,,,,,,,,,,images/fotos/foto_4_201405042232.jpg
+
+
+cliente,5,,,,,,,,,,,images/fotos//Foto__20140511091419.png

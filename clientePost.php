@@ -4,6 +4,7 @@
 	include "domain/cliente.php";
 	include "domain/clientePersistencia.php";
 
+	$errorMessage = "";
 	$cliente = new Cliente();
 	$clientePersistencia = new ClientePersistencia();
 
@@ -38,24 +39,44 @@
 		$cliente->setCPF($_REQUEST["txtCPF"]);
 	if (isset($_REQUEST["hideFoto"]))
 		$cliente->setFoto($_REQUEST["hideFoto"]);
-
-	require('libs/Smarty.class.php');
-	$smarty = new Smarty;
-
-	$smarty->template_dir = 'templates/';
-
-	if ($_SERVER['REQUEST_METHOD'] == "POST")
+		
+	if (isset($_FILES['userfile']))
 	{
-		print_r($cliente);
+		$uploaddir = 'images/fotos/';	
+		$ext = end((explode(".", $_FILES['userfile']['name'])));	
+		date_default_timezone_set('America/Sao_Paulo');	
+		$dataHora = date('Ymdhis', time());
+		
+		$uploadPath = $uploaddir . "/Foto_" . $cliente->getId() . "_" . $dataHora . "." . $ext;
+		
+		//if ($_FILES['userfile']['size'] > 1048576)// 1Mb
+		if ($_FILES['userfile']['size'] > 524288) // 500Kb
+		{
+			$errorMessage = "O tamanho da foto foi excedido ".$_FILES['userfile']['size']."\n";
+		} else if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadPath)) {
+				$cliente->setFoto($uploadPath);
+		} else {			
+			$errorMessage = "Não possível copiar a foto\n";
+		}
+	}
+	
+
+	if (($_SERVER['REQUEST_METHOD'] == "POST") and ($errorMessage == ""))
+	{
 		$id = $clientePersistencia->Post($cliente);
 		$redirect = "clientes.php";	
 		header("location:$redirect");
 	}
 
+	require('libs/Smarty.class.php');
+	$smarty = new Smarty;
 
+	$smarty->template_dir = 'templates/';
+	
 	$smarty->assign('nomeSistema',$nomeSistema);
 	$smarty->assign('nomeEmpresa',$nomeEmpresa);
 	$smarty->assign('enderecoEmpresa',$enderecoEmpresa);
+	$smarty->assign('errorMessage',$errorMessage);
 
 	$smarty->assign('cliente', $cliente);
 	$smarty->display('clientePost.tpl');

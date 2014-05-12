@@ -15,10 +15,12 @@
 		</div>
 		<div class="content">
 			<h3>Cadastro de cliente</h3>
-			
+
 			<div>
+			<div>{$errorMessage}</div>
 			
-			<form action="clientePost.php" method="post" >				
+			
+			<form action="clientePost.php" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="hideId" value="{$cliente->getId()}" />
 				<div class="row">
 					<div class="field"><div class="label">Nome: </div><input type="text" value="{$cliente->getNome()}" id="txtNome" name="txtNome" /></div>
@@ -42,12 +44,15 @@
 				</div>
 				<div class="row">
 					<div class="field"><div class="label">Foto: </div><input type="text" value="{$cliente->getFoto()}" id="hideFoto" name="hideFoto" /></div>
-					
+					<div class="field">
+						<img src="{$cliente->getFoto()}" alt="Foto">
+						<input name="userfile" type="file" />
+					</div>
 				</div>
 				<div>
 					<input type="submit" value="Salvar" >
 				</div>
-				
+
 			</form>
 			</div>
 			<a href="admin.php">Voltar</a>
