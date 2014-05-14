@@ -2,6 +2,12 @@
 <head>
 	<title>{$nomeSistema}</title>
 	<link rel="stylesheet" type="text/css" href="site.css" />
+	
+
+	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />
+	
 </head>
 <body>
 	<div class="header">{$nomeSistema}</div>
@@ -45,7 +51,7 @@
 				<div class="row">
 					<div class="field"><div class="label">Foto: </div><input type="text" value="{$cliente->getFoto()}" id="hideFoto" name="hideFoto" /></div>
 					<div class="field">
-						<img src="{$cliente->getFoto()}" alt="Foto">
+						<a href="{$cliente->getFoto()}" id="fotoCliente"><img src="{$cliente->getFoto()}" alt="Foto" style="width: 200px"></a>
 						<input name="userfile" type="file" />
 					</div>
 				</div>
@@ -59,5 +65,18 @@
 		</div>
 	</div>
 	<div class="footer">{$nomeEmpresa} - {$enderecoEmpresa}</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#fotoCliente').fancybox({
+				  helpers: {
+					  title : {
+						  type : 'float'
+					  }
+				  }
+			  });
+				
+		});
+	</script>
 </body>
 </html>

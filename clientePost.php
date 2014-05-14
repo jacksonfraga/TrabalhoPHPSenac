@@ -40,7 +40,7 @@
 	if (isset($_REQUEST["hideFoto"]))
 		$cliente->setFoto($_REQUEST["hideFoto"]);
 		
-	if (isset($_FILES['userfile']))
+	if (isset($_FILES['userfile']) and ($_FILES['userfile']['size'] > 0))
 	{
 		$uploaddir = 'images/fotos/';	
 		$ext = end((explode(".", $_FILES['userfile']['name'])));	
