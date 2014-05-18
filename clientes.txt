@@ -1,0 +1,6 @@
+usuario,admin,123
+usuario,jackson,jackson
+usuario,root,root
+cliente,1,Cliente 1,Cidade,RG,Pai,Endereco,Estado,dsadsa@gmail.com,Mae,Fone,CPF,
+cliente,2,Cliente 2,Cidade 2,RG 2,Pai 2,ENd 2,Estado 2,2222@gmail.com,Mae 2,Fone 2,CPF 2,images/fotos//Foto_2_20140516094941.jpg
+cliente,3,dsad,sdas,sdasd,,sdsadsd,dsad,sdsad@dsad,dsasd,,sdsa,

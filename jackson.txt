@@ -1,8 +1,14 @@
 //arquivo de dados
-cliente,2,Beltrano,Cidade do Beltrano,RG do Beltrano,Pai do Beltrano,End do Beltrano,Estado do Beltrano,beltrano@mail.com,Mae do Beltrano,Fone do Beltrano,CPF do Beltrano,images/fotos/foto_1_201405042232.jpg
-cliente,3,Ciclano,,,,,,,,,,images/fotos/foto_2_201405042232.jpg
+cliente,2,Beltrano,Cidade do Beltrano,RG do Beltrano,Pai do Beltrano,End do Beltrano,Estado do Beltrano,beltrano@mail.com,Mae do Beltrano,Fone do Beltrano,CPF do Beltrano,
+cliente,3,Ciclano,,,,,,,,,,images/fotos//Foto_3_20140516083408.jpg
 
-cliente,4,Baitaca,,,,,,,,,,images/fotos/foto_4_201405042232.jpg
+cliente,4,Baitaca,,,,,,,,,,images/fotos//Foto_4_20140516083427.jpg
 
 
-cliente,5,,,,,,,,,,,images/fotos//Foto_5_20140512082114.png
+cliente,5,JAckson,,,,,,,,,,images/fotos//Foto_5_20140516083435.jpg
+
+cliente,6,Teste,,,,,,,,,,
+cliente,7,dsad,,,,,,sadsa@sdsa.com,,,sadas,
+cliente,8,dsadsa,,,,,,,,,,
+cliente,9,,,,,,,,,,,
+cliente,10,,,,,,,dsaodo@sadsa,,,,

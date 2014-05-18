@@ -45,7 +45,7 @@
 					<tr>
 						<td>{$cliente->getNome()}</td>
 						<td>{$cliente->getCPF()}</td>
-						<td class="center"><div class="div-link btn-foto" ><a id="foto" href="{$cliente->getFoto()}"><img src="images/button-view.png" alt="Ver foto" /></a></div></td>
+						<td class="center"><div class="div-link btn-foto" ><a id="foto" href="{if $cliente->getFoto() eq ''}images/sem-imagem.png{else}{$cliente->getFoto()}{/if}"><img src="images/button-view.png" alt="Ver foto" /></a></div></td>
 						<td class="center"><div class="div-link" ><a href="clientePost.php?id={$cliente->getId()}"><img src="images/button-edit.png" alt="Editar" /></a></div></td>
 						<td class="center"><div class="div-link" ><a href="clientes.php?deleteId={$cliente->getId()}"><img src="images/button-delete.png" alt="Excluir" /></a></div></td>
 					</tr>

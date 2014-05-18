@@ -3,7 +3,7 @@
 
 
 
-	$arr = file('jackson.txt'); // Lê todo o arquivo para um vetor
+	$arr = file('clientes.txt'); // Lê todo o arquivo para um vetor
 
 	foreach($arr as $k=>$linha)
 	{
@@ -25,10 +25,10 @@
 
 	}
 
-	file_put_contents('jackson.txt',$arr);
+	file_put_contents('clientes.txt',$arr);
 
 
 
-	echo str_replace("\n", '<br />', file_get_contents('jackson.txt'));
+	echo str_replace("\n", '<br />', file_get_contents('clientes.txt'));
 
 ?>

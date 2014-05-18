@@ -23,37 +23,43 @@
 			<h3>Cadastro de cliente</h3>
 
 			<div>
-			<div>{$errorMessage}</div>
-			
-			
+			<div class="error">{$errorMessage}</div>
 			<form action="clientePost.php" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="hideId" value="{$cliente->getId()}" />
 				<div class="row">
-					<div class="field"><div class="label">Nome: </div><input type="text" value="{$cliente->getNome()}" id="txtNome" name="txtNome" /></div>
-					<div class="field"><div class="label">Cidade: </div><input type="text" value="{$cliente->getCidade()}" id="txtCidade" name="txtCidade" /></div>
+					<div class="field"><div class="label">Nome: </div><input type="text" value="{$cliente->getNome()}" id="txtNome" name="txtNome" required/></div>
+					<div class="field"><div class="label">Cidade: </div><input type="text" value="{$cliente->getCidade()}" id="txtCidade" name="txtCidade" required/></div>
 				</div>
 				<div class="row">
-					<div class="field"><div class="label">RG: </div><input type="text" value="{$cliente->getRG()}" id="txtRG" name="txtRG" /></div>
+					<div class="field"><div class="label">RG: </div><input type="text" value="{$cliente->getRG()}" id="txtRG" name="txtRG" required/></div>
 					<div class="field"><div class="label">Pai: </div><input type="text" value="{$cliente->getPai()}" id="txtPai" name="txtPai" /></div>
 				</div>
 				<div class="row">
-					<div class="field"><div class="label">End: </div><input type="text" value="{$cliente->getEndereco()}" id="txtEndereco" name="txtEndereco" /></div>
-					<div class="field"><div class="label">Estado: </div><input type="text" value="{$cliente->getEstado()}" id="txtEstado" name="txtEstado" /></div>
+					<div class="field"><div class="label">End: </div><input type="text" value="{$cliente->getEndereco()}" id="txtEndereco" name="txtEndereco" required/></div>
+					<div class="field"><div class="label">Estado: </div><input type="text" value="{$cliente->getEstado()}" id="txtEstado" name="txtEstado" required/></div>
 				</div>
 				<div class="row">
-					<div class="field"><div class="label">EMail: </div><input type="text" value="{$cliente->getEmail()}" id="txtEmail" name="txtEmail" /></div>
-					<div class="field"><div class="label">M&atilde;e: </div><input type="text" value="{$cliente->getMae()}" id="txtMae" name="txtMae" /></div>
+					<div class="field"><div class="label">EMail: </div><input type="email" value="{$cliente->getEmail()}" id="txtEmail" name="txtEmail" required/></div>
+					<div class="field"><div class="label">M&atilde;e: </div><input type="text" value="{$cliente->getMae()}" id="txtMae" name="txtMae" required/></div>
 				</div>
 				<div class="row">
 					<div class="field"><div class="label">Fone: </div><input type="text" value="{$cliente->getFone()}" id="txtFone" name="txtFone" /></div>
-					<div class="field"><div class="label">CPF: </div><input type="text" value="{$cliente->getCPF()}" id="txtCPF" name="txtCPF" /></div>
+					<div class="field"><div class="label">CPF: </div><input type="text" value="{$cliente->getCPF()}" id="txtCPF" name="txtCPF" required/></div>
 				</div>
 				<div class="row">
-					<div class="field"><div class="label">Foto: </div><input type="text" value="{$cliente->getFoto()}" id="hideFoto" name="hideFoto" /></div>
+					
 					<div class="field">
-						<a href="{$cliente->getFoto()}" id="fotoCliente"><img src="{$cliente->getFoto()}" alt="Foto" style="width: 200px"></a>
-						<input name="userfile" type="file" />
+						<div class="label">Foto: </div><input name="userfile" type="file" />
+						<input type="hidden" value="{$cliente->getFoto()}" id="hideFoto" name="hideFoto" />
 					</div>
+				</div>
+				<div>
+					{if $cliente->getFoto() eq ''}						
+					{else}
+						<a href="{$cliente->getFoto()}" id="fotoCliente">
+							<img src="{$cliente->getFoto()}" alt="Foto" style="width: 200px">
+						</a>
+					{/if}
 				</div>
 				<div>
 					<input type="submit" value="Salvar" >

@@ -136,3 +136,19 @@ table tbody tr:nth-of-type(odd) {
 .center {
 	text-align: center;
 }
+
+input:required:invalid, input:focus:invalid {
+    background-image: url(/images/invalid.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+	background: #FF6666; 
+  }
+input:required:valid {
+background-image: url(/images/valid.png);
+background-position: right top;
+background-repeat: no-repeat;
+}
+
+.error {
+	color: #f00;
+}

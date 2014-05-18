@@ -63,9 +63,15 @@
 
 	if (($_SERVER['REQUEST_METHOD'] == "POST") and ($errorMessage == ""))
 	{
-		$id = $clientePersistencia->Post($cliente);
-		$redirect = "clientes.php";	
-		header("location:$redirect");
+		try
+		{
+			$id = $clientePersistencia->Post($cliente);
+			$redirect = "clientes.php";	
+			header("location:$redirect");
+		} catch (Exception $e) {
+			$errorMessage = $e->getMessage();
+		}
+		
 	}
 
 	require('libs/Smarty.class.php');
@@ -75,7 +81,7 @@
 	
 	$smarty->assign('nomeSistema',$nomeSistema);
 	$smarty->assign('nomeEmpresa',$nomeEmpresa);
-	$smarty->assign('enderecoEmpresa',$enderecoEmpresa);
+	$smarty->assign('enderecoEmpresa',$enderecoEmpresa);	
 	$smarty->assign('errorMessage',$errorMessage);
 
 	$smarty->assign('cliente', $cliente);

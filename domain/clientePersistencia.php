@@ -17,7 +17,7 @@ class ClientePersistencia {
 	{
 		$items = array();
 
-		$arquivo = file('jackson.txt'); // Lê todo o arquivo para um vetor
+		$arquivo = file('clientes.txt'); // Lê todo o arquivo para um vetor
 
 		if ($arquivo) {
 
@@ -37,15 +37,15 @@ class ClientePersistencia {
 				// Obtendo o nome
 				$cliente = new Cliente();
 
-				$cliente->setId($registro[01]);
-				$cliente->setNome($registro[02]);
-				$cliente->setCidade($registro[03]);
-				$cliente->setRG($registro[04]);
-				$cliente->setPai($registro[05]);
-				$cliente->setEndereco($registro[06]);
-				$cliente->setEstado($registro[07]);
-				$cliente->setEMail($registro[08]);
-				$cliente->setMae($registro[09]);
+				$cliente->setId($registro[1]);
+				$cliente->setNome($registro[2]);
+				$cliente->setCidade($registro[3]);
+				$cliente->setRG($registro[4]);
+				$cliente->setPai($registro[5]);
+				$cliente->setEndereco($registro[6]);
+				$cliente->setEstado($registro[7]);
+				$cliente->setEMail($registro[8]);
+				$cliente->setMae($registro[9]);
 				$cliente->setFone($registro[10]);
 				$cliente->setCPF($registro[11]);
 				$cliente->setFoto($registro[12]);
@@ -62,7 +62,7 @@ class ClientePersistencia {
 	{
 		$cliente = new Cliente();
 
-		$arquivo = file('jackson.txt'); // Lê todo o arquivo para um vetor
+		$arquivo = file('clientes.txt'); // Lê todo o arquivo para um vetor
 
 		if ($arquivo) {
 
@@ -76,7 +76,7 @@ class ClientePersistencia {
 				}
 				
 				
-				if ($registro[01] == $id)
+				if ($registro[1] == $id)
 				{
 					// Obtendo o nome
 					$cliente = new Cliente();
@@ -105,7 +105,7 @@ class ClientePersistencia {
 	function Delete($id)
 	{
 
-		$arquivo = file('jackson.txt'); // Lê todo o arquivo para um vetor
+		$arquivo = file('clientes.txt'); // Lê todo o arquivo para um vetor
 
 		if ($arquivo) {
 
@@ -117,21 +117,73 @@ class ClientePersistencia {
 					continue;
 				}
 
-				if ($registro[01] == $id)
+				if ($registro[1] == $id)
 				{
 					unset($arquivo[$k]); // Elininando a linha
 				}
 			}
 
-			file_put_contents('jackson.txt',$arquivo);
+			file_put_contents('clientes.txt',$arquivo);
 		}
 	}
+	
 	function Post($cliente)
 	{
 		$id = $cliente->getId();
 		$lastID = 0;
+		
+		$valido = true;
+		
+		$messageErro = "";
+		
 
-		$arquivo = file('jackson.txt'); // Lê todo o arquivo para um vetor
+		if($cliente->getNome() == '')
+		{
+			$valido = false;
+			$messageErro .= "Informe o campo Nome<br />";
+		}
+		if($cliente->getCidade() == '')
+		{
+			$valido = false;
+			$messageErro .= "Informe o campo Cidade<br />";
+		}
+		if($cliente->getRG() == '')
+		{
+			$valido = false;
+			$messageErro .= "Informe o campo RG<br />";
+		}
+		if($cliente->getEndereco() == '')
+		{
+			$valido = false;
+			$messageErro .= "Informe o campo Endereco<br />";
+		}
+		if($cliente->getEstado() == '')
+		{
+			$valido = false;
+			$messageErro .= "Informe o campo Estado<br />";
+		}
+		if($cliente->getEMail() == '')
+		{
+			$valido = false;
+			$messageErro .= "Informe o campo EMail<br />";
+		}
+		if($cliente->getMae() == '')
+		{
+			$valido = false;
+			$messageErro .= "Informe o campo Mae<br />";
+		}
+		if($cliente->getCPF() == '')
+		{
+			$valido = false;
+			$messageErro .= "Informe o campo CPF<br />";
+		}
+		
+		if (!$valido)
+		{
+			throw new Exception($messageErro . "<br />");
+		}
+
+		$arquivo = file('clientes.txt'); // Lê todo o arquivo para um vetor
 
 		if ($arquivo) {
 
@@ -143,10 +195,10 @@ class ClientePersistencia {
 					continue;
 				}
 
-				if ($registro[01] > $lastID)
-					$lastID = $registro[01];
+				if ($registro[1] > $lastID)
+					$lastID = $registro[1];
 
-				if ($registro[01] == $id)
+				if ($registro[1] == $id)
 				{
 					unset($registro);
 					
@@ -218,7 +270,7 @@ class ClientePersistencia {
 		}
 
 
-		file_put_contents('jackson.txt', $arquivo);
+		file_put_contents('clientes.txt', $arquivo);
 
 		return $id;
 	}
